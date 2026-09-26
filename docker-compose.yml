@@ -1,0 +1,36 @@
+# Run Outpost without installing Python or Node.
+#
+#   docker compose run --rm outpost init     # set up your profile
+#   docker compose run --rm outpost run      # collect and rank
+#   docker compose up                        # review at http://localhost:8420
+#
+# Config and data live in named volumes, so `docker compose down` keeps your
+# job history and `docker compose down -v` deletes it — which is the whole
+# privacy story in one command (ADR-0001).
+
+services:
+  outpost:
+    build: .
+    image: outpost:local
+    # Published to loopback only. The UI has no authentication because there is
+    # no account system to authenticate against; binding it to 0.0.0.0 on the
+    # host would publish the user's job search to their network.
+    ports:
+      - "127.0.0.1:8420:8420"
+    volumes:
+      - outpost-config:/config
+      - outpost-data:/data
+    environment:
+      # Scoring is off by default — stages 1-7 still run and are most of the
+      # value. Set a provider and key here to enable stage 8.
+      OUTPOST_LLM__PROVIDER: "${OUTPOST_LLM_PROVIDER:-none}"
+      OUTPOST_LLM__API_KEY: "${OUTPOST_LLM_API_KEY:-}"
+      OUTPOST_LLM__MODEL: "${OUTPOST_LLM_MODEL:-}"
+      OUTPOST_LOG_LEVEL: "${OUTPOST_LOG_LEVEL:-INFO}"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+volumes:
+  outpost-config:
+  outpost-data:

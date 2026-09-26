@@ -1,0 +1,16 @@
+[
+  {
+    "id": "no-url",
+    "text": "Ghost Posting",
+    "createdAt": 1758019200000
+  },
+  "not-an-object",
+  {
+    "id": "0c0c0c0c-0000-4000-8000-000000000000",
+    "hostedUrl": "https://jobs.lever.co/examplelabs/0c0c0c0c-0000-4000-8000-000000000000",
+    "text": null,
+    "categories": "Remote",
+    "createdAt": "not-a-number",
+    "description": null
+  }
+]

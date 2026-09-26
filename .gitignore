@@ -1,0 +1,84 @@
+# ---------------------------------------------------------------------------
+# Personal data — NEVER commit any of this.
+#
+# These patterns are listed first, and deliberately over-broad, because the
+# failure they prevent is unrecoverable: a committed database or resume is in
+# git history permanently, and scrubbing it needs `git filter-repo`, not
+# `git rm`. Outpost's own database contains the user's full job-search history
+# — every listing they scraped, shortlisted and rejected, and by implication
+# which employer they are quietly leaving.
+#
+# If you are adding an exception here, don't.
+# ---------------------------------------------------------------------------
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+data/
+exports/
+profile.yml
+profile.yaml
+!profile.example.yml
+resume.*
+*resume*
+!resume.example.txt
+*cv*.pdf
+.env
+.env.*
+!.env.example
+config.yml
+config.yaml
+!config.example.yml
+rules.yml
+!rules.example.yml
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# ---------------------------------------------------------------------------
+# Frontend
+# ---------------------------------------------------------------------------
+node_modules/
+web/dist/
+*.tsbuildinfo
+
+# Built SPA is a release artifact, not source. It is published with releases
+# and baked into the Docker image, never committed.
+src/outpost/resources/web/
+
+# ---------------------------------------------------------------------------
+# Editors and OS
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# ---------------------------------------------------------------------------
+# Scratch
+# ---------------------------------------------------------------------------
+scratch/
+tmp/
+*.log
+
+# Tool caches
+.import_linter_cache/

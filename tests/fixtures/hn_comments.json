@@ -1,0 +1,38 @@
+{
+  "hits": [
+    {
+      "objectID": "45400111",
+      "parent_id": 45400001,
+      "story_id": 45400001,
+      "author": "acmehiring",
+      "created_at": "2025-09-01T15:22:40.000Z",
+      "comment_text": "Acme Systems | Senior Backend Engineer | REMOTE (EU timezones) | EUR 80-110k<p>We run a small platform team on Python and Postgres. You would own ingestion end to end, from the scrapers through to the API.<p>Apply: jobs@acme.example or email me directly."
+    },
+    {
+      "objectID": "45400222",
+      "parent_id": 45400001,
+      "story_id": 45400001,
+      "author": "globexcto",
+      "created_at": "2025-09-01T16:05:02.000Z",
+      "comment_text": "Globex | Platform Engineer | Berlin or Remote within CET +/- 2 | full-time<p>Kubernetes, Terraform, and a mercifully small amount of YAML. We are twelve people and profitable.<p>https://globex.example/careers"
+    },
+    {
+      "objectID": "45400333",
+      "parent_id": 45400111,
+      "story_id": 45400001,
+      "author": "curious",
+      "created_at": "2025-09-01T17:11:00.000Z",
+      "comment_text": "This is a reply to the Acme posting asking whether they sponsor visas, and it is deliberately long enough to clear the minimum length filter so the test proves that top-level filtering is what excludes it rather than the length check."
+    },
+    {
+      "objectID": "45400444",
+      "parent_id": 45400001,
+      "story_id": 45400001,
+      "author": "brief",
+      "created_at": "2025-09-01T18:00:00.000Z",
+      "comment_text": "Are these all remote?"
+    }
+  ],
+  "nbHits": 4,
+  "page": 0
+}

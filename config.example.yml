@@ -1,0 +1,101 @@
+# Outpost configuration — copy to your config directory as `config.yml`.
+#
+#   macOS   ~/Library/Application Support/outpost/config.yml
+#   Linux   ~/.config/outpost/config.yml
+#   Windows %LOCALAPPDATA%\outpost\config.yml
+#
+# `outpost doctor` prints the exact paths for your machine.
+#
+# Everything here is optional — Outpost runs with no config file at all.
+# Environment variables override this file; nested keys use a double
+# underscore, e.g. OUTPOST_LLM__PROVIDER=gemini.
+
+# ---------------------------------------------------------------------------
+# Sources
+# ---------------------------------------------------------------------------
+sources:
+  enabled:
+    - remoteok
+    - remotive
+    - weworkremotely
+    - hackernews
+
+  # ATS boards are per company. These are public, unauthenticated endpoints;
+  # the slug is the company's identifier in its board URL, e.g.
+  # https://boards.greenhouse.io/<slug>
+  greenhouse_companies: []
+  #   - stripe
+  #   - figma
+  lever_companies: []
+  ashby_companies: []
+
+  timeout_seconds: 20.0
+
+# ---------------------------------------------------------------------------
+# Scoring (optional)
+#
+# `none` is the default and a fully supported mode: stages 1-7 still run, so
+# you get deduplication, eligibility labelling, scam and liveness checks, and
+# local ranking. Only the LLM match score is absent.
+# ---------------------------------------------------------------------------
+llm:
+  provider: none # none | gemini | openai_compatible | ollama | manual
+
+  # Put keys in the environment, not here — this file is likelier to be shared
+  # or pasted into an issue than your shell is:
+  #   export OUTPOST_LLM__API_KEY=...
+  # api_key: null
+
+  # model: gemini-2.0-flash                    # for gemini
+  # base_url: https://openrouter.ai/api/v1     # for openai_compatible
+  # base_url: http://localhost:11434           # for ollama
+
+  batch_size: 10
+  # The cap that keeps stage 8 bounded. Combined with pre-score ordering,
+  # exhausting a quota costs you the tail of the ranking, not a random slice.
+  max_jobs_per_run: 200
+  requests_per_minute: 15
+  timeout_seconds: 120.0
+
+# ---------------------------------------------------------------------------
+# Filtering
+#
+# Defaults are permissive on purpose. An empty results table caused by a filter
+# you did not know existed is worse than a few extra rows to skim.
+# ---------------------------------------------------------------------------
+filters:
+  exclude_ineligible: true
+
+  # Leave this false unless you know what you are trading away. Setting it true
+  # hides every listing whose eligibility we could not determine — which, on an
+  # unstructured source like Hacker News, is most of them. It re-creates the
+  # silent-loss failure the tri-state design exists to prevent. It is here
+  # because it is your call to make, not because it is a good default.
+  exclude_unknown_eligibility: false
+
+  max_age_days: 45
+
+  # Compared against a listing's stated pay, converted with approximate rates.
+  # A listing whose pay we cannot parse is NEVER dropped by this.
+  # min_hourly_rate_usd: 40
+
+  # Requires at least one of your declared skills to appear somewhere in the
+  # listing. Cheap way to drop non-engineering noise from aggregators.
+  require_tech_signal: true
+
+  # Added to the built-in list of non-IC titles (recruiter, sales, ...).
+  excluded_title_phrases: []
+  # Restricts to titles containing one of these. Empty means no restriction.
+  required_title_phrases: []
+
+# ---------------------------------------------------------------------------
+# Interface
+# ---------------------------------------------------------------------------
+
+# Loopback, and it should stay there: the UI has no authentication because
+# Outpost has no accounts. `outpost doctor` warns if you change this.
+ui_host: 127.0.0.1
+ui_port: 8420
+
+log_level: INFO
+verbose: false

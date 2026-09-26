@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "id": 4551221,
+      "internal_job_id": 3300112,
+      "title": "Backend Engineer, Payments",
+      "updated_at": "2025-09-17T12:31:04-04:00",
+      "requisition_id": "R-114",
+      "absolute_url": "https://boards.greenhouse.io/examplecorp/jobs/4551221",
+      "location": { "name": "Remote - Americas" },
+      "metadata": [],
+      "content": "&lt;p&gt;We are looking for a backend engineer to join the payments team.&lt;/p&gt;&lt;p&gt;Stack: Go, Postgres, Kafka.&lt;/p&gt;"
+    },
+    {
+      "id": 4551990,
+      "title": "Engineering Manager, Infrastructure",
+      "updated_at": "2025-09-15T09:00:00-04:00",
+      "absolute_url": "https://boards.greenhouse.io/examplecorp/jobs/4551990",
+      "location": { "name": "Remote - EMEA" },
+      "content": "&lt;p&gt;Lead a team of six infrastructure engineers.&lt;/p&gt;"
+    }
+  ],
+  "meta": { "total": 2 }
+}

@@ -1,0 +1,18 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "No absolute_url",
+      "location": { "name": "Remote" }
+    },
+    null,
+    {
+      "id": 4552001,
+      "absolute_url": "https://boards.greenhouse.io/examplecorp/jobs/4552001",
+      "title": null,
+      "location": "Remote - Worldwide",
+      "content": null,
+      "updated_at": null
+    }
+  ]
+}

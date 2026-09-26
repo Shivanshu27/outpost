@@ -1,0 +1,20 @@
+{
+  "job-count": 3,
+  "jobs": [
+    {
+      "id": 1,
+      "title": "No URL Here",
+      "company_name": "Ghost Ltd"
+    },
+    42,
+    {
+      "id": 1902999,
+      "url": "https://remotive.com/remote-jobs/other/mystery-1902999",
+      "title": null,
+      "company_name": null,
+      "tags": null,
+      "publication_date": null,
+      "description": null
+    }
+  ]
+}

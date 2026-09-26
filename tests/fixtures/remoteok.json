@@ -1,0 +1,37 @@
+[
+  {
+    "legal": "By using this data you agree to keep the 'apply_url' intact and link back to remoteok.com"
+  },
+  {
+    "slug": "acme-senior-backend-engineer",
+    "id": "1017421",
+    "epoch": 1758326400,
+    "date": "2025-09-20T00:00:00+00:00",
+    "company": "Acme Systems",
+    "company_logo": "https://remoteok.com/assets/acme.png",
+    "position": "Senior Backend Engineer",
+    "tags": ["backend", "python", "postgres"],
+    "logo": "https://remoteok.com/assets/acme.png",
+    "description": "<p>We are hiring a senior backend engineer to own our ingestion pipeline.</p>",
+    "location": "Worldwide",
+    "salary": "$100,000 - $140,000",
+    "salary_min": 100000,
+    "salary_max": 140000,
+    "apply_url": "https://remoteok.com/l/1017421",
+    "url": "https://remoteok.com/remote-jobs/1017421-senior-backend-engineer-acme-systems"
+  },
+  {
+    "slug": "globex-platform-engineer",
+    "id": 1017455,
+    "epoch": 1758412800,
+    "date": "2025-09-21T09:30:00+00:00",
+    "company": "Globex",
+    "position": "Platform Engineer (Kubernetes)",
+    "tags": ["devops", "kubernetes"],
+    "description": "<p>Run the platform. Remote within EMEA.</p>",
+    "location": "EMEA",
+    "salary": "",
+    "apply_url": "https://remoteok.com/l/1017455",
+    "url": "https://remoteok.com/remote-jobs/1017455-platform-engineer-kubernetes-globex"
+  }
+]

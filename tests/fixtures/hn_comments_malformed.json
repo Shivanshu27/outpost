@@ -1,0 +1,25 @@
+{
+  "hits": [
+    {
+      "objectID": "45400555",
+      "parent_id": 45400001,
+      "story_id": 45400001,
+      "author": "deleted",
+      "created_at": "2025-09-01T19:00:00.000Z",
+      "comment_text": null
+    },
+    "not-an-object",
+    {
+      "parent_id": 45400001,
+      "comment_text": "This posting has no objectID at all, which means there is no stable identity for it and no URL we could send the user to, so it must be dropped rather than guessed at."
+    },
+    {
+      "objectID": "45400666",
+      "parent_id": 45400001,
+      "created_at": null,
+      "comment_text": "<p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p><p>   </p>"
+    }
+  ],
+  "nbHits": 4,
+  "page": 0
+}

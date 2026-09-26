@@ -1,0 +1,30 @@
+{
+  "hits": [
+    {
+      "objectID": "41129773",
+      "title": "Ask HN: Who is hiring? (August 2024)",
+      "author": "whoishiring",
+      "created_at": "2024-08-01T15:00:32.000Z",
+      "num_comments": 812,
+      "points": 190
+    },
+    {
+      "objectID": "45400001",
+      "title": "Ask HN: Who is hiring? (September 2025)",
+      "author": "whoishiring",
+      "created_at": "2025-09-01T15:00:11.000Z",
+      "num_comments": 640,
+      "points": 143
+    },
+    {
+      "objectID": "45400002",
+      "title": "Ask HN: Who wants to be hired? (September 2025)",
+      "author": "whoishiring",
+      "created_at": "2025-09-01T15:00:14.000Z",
+      "num_comments": 210,
+      "points": 61
+    }
+  ],
+  "nbHits": 3,
+  "page": 0
+}

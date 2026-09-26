@@ -1,0 +1,51 @@
+# Outpost profile — this is what eligibility is resolved against.
+#
+# Copy this file to your config directory as `profile.yml`:
+#   macOS   ~/Library/Application Support/outpost/profile.yml
+#   Linux   ~/.config/outpost/profile.yml
+#
+# Nothing here is inferred or uploaded. You declare your situation, and rules
+# are evaluated against what you declared.
+
+# ISO 3166-1 alpha-2 country code.
+# This exempts you from region-restriction rules (e.g. "India friendly").
+country: IN
+
+# IANA timezone. Used to compute whether stated overlap requirements are
+# achievable from where you are.
+timezone: Asia/Kolkata
+
+# Countries/regions where you already hold the right to work, if any.
+# Leave empty if none — that is the common case and it is handled.
+work_authorisation: []
+
+# What you will accept. Empty means "no preference".
+contract_types:
+  - full_time
+  - contract
+
+currencies:
+  - USD
+  - EUR
+  - GBP
+
+# Roles you are looking for. Used for local pre-ranking (Stage 7).
+titles:
+  - Senior Software Engineer
+  - Backend Engineer
+  - Staff Software Engineer
+  - Platform Engineer
+
+# Your technical skills. Matched word-boundary-exact against listings.
+skills:
+  - Python
+  - Go
+  - TypeScript
+  - PostgreSQL
+  - Distributed Systems
+  - Docker
+  - Kubernetes
+  - AWS
+
+# Optional minimum compensation floor. Omit rather than guessing.
+# min_hourly_rate_usd: 40

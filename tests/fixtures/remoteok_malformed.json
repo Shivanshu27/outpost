@@ -1,0 +1,20 @@
+[
+  {
+    "legal": "By using this data you agree to keep the 'apply_url' intact"
+  },
+  {
+    "id": "no-url-record",
+    "position": "Ghost Role",
+    "company": "Nowhere Inc"
+  },
+  "not-an-object",
+  {
+    "id": null,
+    "position": null,
+    "company": null,
+    "tags": "python",
+    "salary": 120000,
+    "date": null,
+    "url": "https://remoteok.com/remote-jobs/1017999-mystery"
+  }
+]

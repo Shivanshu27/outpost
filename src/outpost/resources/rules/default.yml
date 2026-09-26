@@ -1,0 +1,258 @@
+# Outpost default eligibility ruleset
+#
+# Rules are data (ADR-0007). Copy this file, edit it, and point Outpost at
+# yours with `rules_path` — or drop overrides in your config directory and they
+# will be merged over these by rule id.
+#
+# ORDER MATTERS. Within a dimension the first matching rule wins, so specific
+# rules must come before general ones. The ordering below is roughly:
+#   1. explicit worldwide-friendly statements   (positive, most specific)
+#   2. explicit regional restrictions            (negative)
+#   3. softer / inferred restrictions            (negative, least specific)
+#
+# A rule that matches nothing is indistinguishable from a listing with no
+# restrictions, so if you add phrases, add a fixture to
+# tests/fixtures/eligibility_corpus.yml too.
+
+version: 1
+
+rules:
+  # ======================================================================
+  # LOCATION — positive signals first
+  # ======================================================================
+
+  - id: loc.worldwide
+    dimension: location
+    when:
+      any_phrase:
+        - "work from anywhere"
+        - "anywhere in the world"
+        - "globally remote"
+        - "remote worldwide"
+        - "worldwide remote"
+        - "fully remote worldwide"
+        - "remote - worldwide"
+        - "remote (worldwide)"
+        - "location independent"
+        - "hire globally"
+        - "hiring globally"
+        - "anywhere on earth"
+    verdict: eligible
+    evidence: "Listing states worldwide eligibility"
+
+  - id: loc.any_timezone
+    dimension: location
+    when:
+      any_phrase:
+        - "any timezone"
+        - "all timezones"
+        - "timezone agnostic"
+        - "async first"
+        - "fully async"
+    verdict: eligible
+    evidence: "Listing states it is timezone-agnostic"
+
+  # ======================================================================
+  # LOCATION — hard regional restrictions
+  # ======================================================================
+
+  - id: loc.us_only
+    dimension: location
+    when:
+      any_phrase:
+        - "us only"
+        - "usa only"
+        - "u.s. only"
+        - "us-only"
+        - "united states only"
+        - "us based only"
+        - "us-based only"
+        - "must be based in the us"
+        - "must be located in the united states"
+        - "must reside in the united states"
+        - "must reside in the us"
+        - "residents of the united states"
+        - "remote (us)"
+        - "remote - us"
+        - "remote us"
+        - "us remote"
+        - "within the united states"
+        - "anywhere in the us"
+        - "anywhere in the united states"
+    verdict: ineligible
+    unless_profile_matches:
+      country: ["US"]
+    evidence: "Listing restricts hiring to the United States"
+
+  - id: loc.us_canada_only
+    dimension: location
+    when:
+      any_phrase:
+        - "us or canada"
+        - "us and canada only"
+        - "north america only"
+        - "north american time zones"
+        - "canada or the us"
+        - "usa/canada"
+    verdict: ineligible
+    unless_profile_matches:
+      country: ["US", "CA"]
+    evidence: "Listing restricts hiring to the US and Canada"
+
+  - id: loc.uk_only
+    dimension: location
+    when:
+      any_phrase:
+        - "uk only"
+        - "uk-only"
+        - "united kingdom only"
+        - "must be based in the uk"
+        - "must reside in the uk"
+        - "remote (uk)"
+        - "uk based only"
+        - "uk-based only"
+        - "right to work in the uk"
+    verdict: ineligible
+    unless_profile_matches:
+      country: ["GB", "UK"]
+    evidence: "Listing restricts hiring to the United Kingdom"
+
+  - id: loc.eu_only
+    dimension: location
+    when:
+      any_phrase:
+        - "eu only"
+        - "eu-only"
+        - "europe only"
+        - "european union only"
+        - "must be based in the eu"
+        - "must reside in the eu"
+        - "remote (eu)"
+        - "remote - europe"
+        - "eu based only"
+        - "eu-based only"
+        - "within the european union"
+        - "eu residents"
+    verdict: ineligible
+    unless_profile_matches:
+      country:
+        ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE",
+         "IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE"]
+    evidence: "Listing restricts hiring to the European Union"
+
+  - id: loc.emea_only
+    dimension: location
+    when:
+      any_phrase:
+        - "emea only"
+        - "emea region"
+        - "emea-based"
+    verdict: ineligible
+    unless_profile_matches:
+      country:
+        ["GB","UK","IE","FR","DE","ES","IT","NL","BE","SE","NO","DK","FI","PL",
+         "PT","CZ","RO","GR","AT","CH","ZA","AE","IL","TR","NG","KE","EG"]
+    evidence: "Listing restricts hiring to the EMEA region"
+
+  - id: loc.latam_only
+    dimension: location
+    when:
+      any_phrase:
+        - "latam only"
+        - "latin america only"
+        - "based in latam"
+    verdict: ineligible
+    unless_profile_matches:
+      country: ["BR","MX","AR","CO","CL","PE","UY","CR","EC","GT","PA","DO","BO","PY"]
+    evidence: "Listing restricts hiring to Latin America"
+
+  - id: loc.apac_only
+    dimension: location
+    when:
+      any_phrase:
+        - "apac only"
+        - "apac region"
+        - "asia pacific only"
+    verdict: ineligible
+    unless_profile_matches:
+      country: ["IN","SG","AU","NZ","JP","MY","PH","ID","TH","VN","KR","HK","TW","CN"]
+    evidence: "Listing restricts hiring to the APAC region"
+
+  # ======================================================================
+  # AUTHORISATION
+  # ======================================================================
+
+  - id: auth.us_work_authorisation
+    dimension: authorisation
+    when:
+      any_phrase:
+        - "must be authorized to work in the united states"
+        - "must be authorized to work in the us"
+        - "authorized to work in the us without sponsorship"
+        - "us work authorization required"
+        - "legally authorized to work in the united states"
+        - "green card"
+        - "us citizens only"
+        - "us citizenship required"
+        - "must be a us citizen"
+    verdict: ineligible
+    unless_profile_matches:
+      work_authorisation: ["US"]
+    evidence: "Listing requires existing US work authorisation"
+
+  - id: auth.no_sponsorship
+    dimension: authorisation
+    when:
+      any_phrase:
+        - "we do not sponsor"
+        - "we are unable to sponsor"
+        - "cannot provide sponsorship"
+        - "no visa sponsorship"
+        - "sponsorship is not available"
+        - "unable to offer sponsorship"
+    verdict: ineligible
+    unless_profile_matches:
+      work_authorisation: ["US", "GB", "UK", "EU"]
+    evidence: "Listing states visa sponsorship is not available"
+
+  - id: auth.eor_friendly
+    dimension: authorisation
+    when:
+      any_phrase:
+        - "employer of record"
+        - "we hire through deel"
+        - "we hire through remote.com"
+        - "hire via eor"
+        - "contractor of record"
+        - "we can hire anywhere"
+    verdict: eligible
+    evidence: "Listing hires internationally via an employer of record"
+
+  # ======================================================================
+  # TIMEZONE — computation, not phrases (see predicates.py)
+  # ======================================================================
+
+  - id: tz.insufficient_overlap
+    dimension: timezone
+    when:
+      predicate: timezone.insufficient_overlap
+    verdict: ineligible
+    evidence: "Required working-hours overlap is not achievable from your timezone"
+
+  - id: tz.sufficient_overlap
+    dimension: timezone
+    when:
+      predicate: timezone.sufficient_overlap
+    verdict: eligible
+    evidence: "Stated overlap requirement is achievable from your timezone"
+
+  # ======================================================================
+  # CURRENCY
+  # ======================================================================
+
+  - id: currency.unsupported
+    dimension: currency
+    when:
+      predicate: currency.unsupported
+    verdict: ineligible
+    evidence: "Pay is quoted in a currency you did not accept"

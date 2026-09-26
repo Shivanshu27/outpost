@@ -1,0 +1,35 @@
+# ==============================================================================
+# Outpost Sample Resume
+#
+# Copy your plain-text resume here:
+#   macOS   ~/Library/Application Support/outpost/resume.txt
+#   Linux   ~/.config/outpost/resume.txt
+#
+# Outpost uses this plain-text file exclusively for Stage 8 LLM Match Scoring.
+# Plain text is preferred over PDF/YAML so you can edit it easily in any editor.
+# ==============================================================================
+
+Senior Backend & Distributed Systems Engineer
+
+Location: India (Open to 100% Remote Global roles)
+Timezone: IST (UTC+5:30)
+
+Summary:
+Senior Software Engineer with 7+ years of experience designing and scaling high-throughput
+distributed systems, backend microservices, and asynchronous event-driven pipelines.
+
+Core Skills:
+- Languages: Python, Go, TypeScript, SQL
+- Data & Storage: PostgreSQL, Redis, Kafka, SQLite
+- Cloud & Infrastructure: AWS, Docker, Kubernetes, Terraform, CI/CD
+- Architecture: Domain-Driven Design (DDD), Hexagonal Architecture, REST, gRPC
+
+Experience:
+Senior Software Engineer | FinTech Platform (2022 - Present)
+- Designed high-throughput transaction processing engine handling 10k+ ops/sec.
+- Reduced API p99 latencies by 45% by implementing Redis caching and connection pooling.
+- Led migration of monolith services into event-driven microservices using Kafka.
+
+Software Engineer | SaaS Platform (2019 - 2022)
+- Built automated data ingest pipelines and web scraping infrastructure.
+- Designed schema migrations and database indexing strategies for multi-tenant Postgres.
