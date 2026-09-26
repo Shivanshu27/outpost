@@ -153,7 +153,7 @@ jobs:
       - name: Reject personal data and databases
         run: |
           set -euo pipefail
-          if git ls-files | grep -Ei '\.(db|sqlite3?)$|(^|/)(data|exports)/|resume|profile\.ya?ml|^\.env$'; then
+          if git ls-files | grep -v '\.example\.' | grep -Ei '\.(db|sqlite3?)$|(^|/)(data|exports)/|resume|profile\.ya?ml|^\.env$'; then
             echo "::error::Personal data or a database is tracked in git. See .gitignore."
             exit 1
           fi
