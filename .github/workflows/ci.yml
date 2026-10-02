@@ -159,7 +159,14 @@ jobs:
           fi
           echo "No personal data tracked."
 
-      - name: Scan for secrets
-        uses: gitleaks/gitleaks-action@v2
+      # The whole history, every run, with a pinned CLI. The gitleaks action
+      # scans only the pushed range as `<first>^..<last>`, which is undefined
+      # when the push contains the root commit (a first push or a history
+      # rewrite) and fails the job without scanning anything.
+      - name: Scan for secrets (full history)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_VERSION: "8.21.2"
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" | tar xz gitleaks
+          ./gitleaks git --redact --verbose --exit-code 1 .
